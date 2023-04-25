@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
-module.export = (sequelize) => {
-    sequelize.define("activity", {
+module.exports = (sequelize) => {
+    const Activity = sequelize.define("activity", {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -29,6 +29,15 @@ module.export = (sequelize) => {
             allowNull: false,
         },
     })
+   /* Activity.associate = (models) => {
+        Activity.belongsToMany(
+           models.Country,
+           {
+              through: 'CountriesActivities',
+              timestamps: false
+           }
+        );
+     }*/
 }
 
 
