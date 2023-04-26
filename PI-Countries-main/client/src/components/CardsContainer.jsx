@@ -1,22 +1,21 @@
-import axios from "axios";
 import Card from "./Card";
+import style from "../styles/CardsContainer.module.css";
 
-
-const CardsContainer = () => {
-    const countries = axios.get("http://localhost:3001/countries")
-
-
-return (
-    <div>
-        {countries.map(county => {
-            return <Card>
-                flag ={county.flag}
-                name={county.name}
-                continent={county.continent} 
-            </Card>
+const CardsContainer = ({countries}) => {
+    return (
+      <div className={style.container}>
+        {countries.map((country) => {
+          return (
+            <Card
+              flag={country.flag}
+              name={country.name}
+              continent={country.continent}
+              key={country.id} 
+            />
+          )
         } )}
-    </div>
-)
-};
+      </div>
+    );
+  };
 
 export default CardsContainer;

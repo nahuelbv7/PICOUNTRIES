@@ -3,9 +3,12 @@ import reducer from "./reducer";
 import  thunkMiddleware  from "redux-thunk";
 
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
-
-const store = createStore(reducer,applyMiddleware(thunkMiddleware));
+const store = createStore(
+    reducer,
+    composeEnhancer (applyMiddleware(thunkMiddleware))
+    );
 
 
 

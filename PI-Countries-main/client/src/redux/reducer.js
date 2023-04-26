@@ -1,3 +1,11 @@
+import { GET_DATA, GET_ID, GET_ACTIVITIES } from "./actions-types";
+
+const initialState = { 
+    country:[],
+    detail: [],
+    activities: []          
+};
+
 const reducer = (state = initialState, action) => {
     switch(action.type)
     {

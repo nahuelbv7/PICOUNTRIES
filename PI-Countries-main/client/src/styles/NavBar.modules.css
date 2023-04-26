@@ -1,8 +1,0 @@
-.mainCountainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: green;
-    border-radius: 15px;
-    border: 1px solid black;
-}
