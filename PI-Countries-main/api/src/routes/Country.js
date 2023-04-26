@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const axios = require("axios");
-const { Op, Country, Activity } = require("../db.js");
-const e = require("express");
+const { Country, Activity } = require("../db.js");
+// const e = require("express");
 
 const router = Router();
 
@@ -22,7 +22,7 @@ const getApiInfo = async () => {
 		};
 		return country;
 	});
-	return map;
+	return map;							//ESTAMOS RETORNANDO UN [] DE REGISTRO DE LA DB
 };
 
 //Carga
@@ -31,7 +31,7 @@ const countriesToDb = async () => {
 		const countries = await Country.findAll();
 		if (!countries.length) {
 			const array = await getApiInfo();
-			await Country.bulkCreate(array);
+			await Country.bulkCreate(array);		//Bulkcreate recibe un [] y crea todo de una
 		}
 	} catch (error) {
 		console.log(error);
@@ -41,10 +41,10 @@ const countriesToDb = async () => {
 
 
 //alimenta la DB con lo que trajo
-const loadCountries = async () => {
-	await countriesToDb();
-};
-loadCountries();
+// const loadCountries = async () => {
+// 	await countriesToDb();
+// };
+// loadCountries();
 
 //Ruta general de todos los paises o por Query
 router.get("/countries", async (req, res) => {
