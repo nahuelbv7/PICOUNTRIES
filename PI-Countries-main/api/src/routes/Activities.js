@@ -12,7 +12,7 @@ router.get('/activities', async (req, res) => {
     if(activities) {
       return res.status(200).json(activities);
     } else {
-      return res.status(404).json(activities.length ? activities :"No se encontraron activdades"); 
+      return res.status(404).json(activities.length ? activities :"No se encontraron actividades"); 
     }
 
   });

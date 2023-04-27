@@ -26,9 +26,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 activities: action.payload
             }
+        
+        }
 
     }
+ 
 
-}
 
+
+
+
+  
+  
 export default reducer;

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,900;1,600&family=Roboto:wght@500&family=Sigmar&display=swap');
+
+.div {
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  margin-top: 24rem;
+  margin-left: 90rem;
+}
+
+.button {
+    color: rgb(255, 255, 255);
+    padding: 16px 30px;
+    font-size: 2rem;
+    border-radius: 10px;
+    background-color: rgb(1, 38, 72);
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    transition: 0.5s;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .button:hover {
+    color: red;
+    text-decoration:dashed blue ;
+   }
+  

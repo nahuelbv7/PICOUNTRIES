@@ -1,0 +1,12 @@
+body{
+    background-color: aliceblue;
+}
+.verticalNav {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+margin-top: 1em;
+height: 1vh;
+width: 100vh;
+}

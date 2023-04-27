@@ -1,38 +1,68 @@
-import './App.css';
-// import axios from "axios";
 import { useEffect, useState } from "react";
-import { Route } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
 import { Form, Detail, Landing, About } from "./views";
 import NavBar from "./components/NavBar";
 import CardsContainer from './components/CardsContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from "./redux/actions";
+import { getCountries, searchCountry } from "./redux/actions";
+import VerticalNav from "./components/VerticalNav";
+import axios from "axios";
+import { SearchBar } from "./components/SearchBar";
+
+
 
 function App() {
   
-  const dispatch = useDispatch();  // Asigna useDispatch hook de Redux a la constante dispatch.
-  
-  // Efecto secundario que se ejecuta solo una vez, cuando el componente se monta.
+  const dispatch = useDispatch();
+  const location = useLocation(); // Hook de react-router-dom para obtener la ubicación actual
+  const [showNavbar, setShowNavbar] = useState(true); // Estado local para controlar si se muestra o no la barra de navegación
+
   useEffect(() => {
-    document.title = "PI-Countries";  // Cambia el título del documento HTML.
-    dispatch(getCountries());         // Llama a la acción getCountries de Redux usando dispatch.
+    document.title = "PI-Countries";
+    dispatch(getCountries()); // Llama a la acción getCountries de Redux usando dispatch.
   }, []);
 
-  const countries = useSelector((state) => state.country);  // Obtiene el estado de los países de Redux usando useSelector hook de Redux.
+  const countries = useSelector((state) => state.country); // Obtiene el estado de los países de Redux usando useSelector hook de Redux.
+
+  // Lógica para ocultar la barra de navegación en la página de aterrizaje
+  useEffect(() => {
+    if (location.pathname === "/") { // Compara la ubicación actual con la ruta de la página de aterrizaje "/"
+      setShowNavbar(false); // Si la ubicación es la de la página de aterrizaje, oculta la barra de navegación
+    } else {
+      setShowNavbar(true); // Si la ubicación es distinta a la de la página de aterrizaje, muestra la barra de navegación
+    }
+  }, [location]);
+
+
+
+  function onSearch(id, dispatch) {
+    axios.get(`http://localhost:3001/countries/${id}`)
+    .then((response) => {
+      if (response && response.data) {
+        dispatch(searchCountry(response.data));
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
 
   return (
     <div className="App">
-      <NavBar />
-      <Route exact path="/" component={<Landing />} />
-      <Route path="/home">
-        <CardsContainer countries={countries} />  
-      </Route>
-      <Route path="/detail/:id" component={Detail} />
+      {showNavbar && <NavBar />}
+                       {/* condición ? expresión verdadera : expresión falsa */}
+      {location.pathname === "/home" ? <VerticalNav /> : null}
+      {location.pathname === "/home" && (
+        <SearchBar onSearch={(country) => onSearch(country, dispatch)} />
+      )}
+      <Route exact path="/" component={Landing} />
+      <Route path="/home"><CardsContainer countries={countries} /></Route>
+      <Route path="/detail/:id" component={Detail} /> 
       <Route path="/form" component={<Form />} />
-      <Route path="/about" component={About} />
+      <Route path="/about" component={About} /> 
+     
     </div>
   );
 }
-
 
 export default App;

@@ -52,4 +52,9 @@ body {
   border-radius: 0.25rem;
   cursor: pointer;
   text-decoration: none;
+  transition: 0.5s;
 }
+
+.link:hover {
+    color: red;
+ }

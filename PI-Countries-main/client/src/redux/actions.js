@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, GET_ACTIVITIES } from "./actions-types";
+import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY  } from "./actions-types";
 
 
 
@@ -32,6 +32,12 @@ export const getCountryById = (id) => {
 };
 
 
-
+export const searchCountry = (country) => {
+  console.log(country)
+  return {
+    type: SEARCH_COUNTRY,
+    payload: country,
+  };
+}
 
 
