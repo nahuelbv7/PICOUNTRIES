@@ -29,7 +29,7 @@ function App() {
       </Route>
       <Route path="/detail" component={<Detail />} />
       <Route path="/form" component={<Form />} />
-      <Route path="/about" component={<About />} />
+      <Route path="/about" component={About} />
     </div>
   );
 }

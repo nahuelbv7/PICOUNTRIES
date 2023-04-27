@@ -5,10 +5,13 @@ body{background: url("../images/countries.jpg") no-repeat center center fixed;
     background-size: cover;}
 
 .container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
+    justify-content: center;
     flex-direction: row;
     border-radius: 15px;
     flex-wrap: wrap;
     gap: 1em;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
