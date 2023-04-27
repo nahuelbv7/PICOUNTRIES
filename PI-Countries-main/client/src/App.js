@@ -27,7 +27,7 @@ function App() {
       <Route path="/home">
         <CardsContainer countries={countries} />  
       </Route>
-      <Route path="/detail" component={<Detail />} />
+      <Route path="/detail/:id" component={Detail} />
       <Route path="/form" component={<Form />} />
       <Route path="/about" component={About} />
     </div>

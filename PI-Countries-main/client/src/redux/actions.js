@@ -19,6 +19,19 @@ export const getCountries = () => {
 
 
 
+export const getCountryById = (id) => {
+  return async function (dispatch) {
+    const response = await axios.get(`http://localhost:3001/countries/${id}`);
+
+    try {
+      dispatch({ type: GET_ID, payload: response.data });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+};
+
+
 
 
 
