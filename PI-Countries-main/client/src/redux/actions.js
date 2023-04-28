@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE } from "./actions-types";
+import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER } from "./actions-types";
 
 
 
@@ -53,5 +53,23 @@ export const nextPage = () => {
 export const prevPage = () => {
   return {
     type: PREV_PAGE,
+  }
+}
+
+
+/// filtercountries -> continent
+export const filterCountries = (continent) => {
+  return {
+    type: FILTER,
+    payload: continent
+  }
+}
+
+
+// order descendentemente los países por orden alfabético y por cantidad de población.
+export const orderCountries = (order) => {
+  return {
+    type: ORDER,
+    payload: order
   }
 }

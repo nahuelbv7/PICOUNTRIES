@@ -2,15 +2,15 @@ import Card from "./Card";
 import style from "../styles/CardsContainer.module.css";
 import Paginate from "../views/Paginate";
 import { useSelector } from "react-redux";
-import { nextPage } from "../redux/actions";
+
 
 const CardsContainer = ({countries}) => {    
   const {numPage} = useSelector((state) => state)
   
-  let init = (numPage-1) * 8
-  let end = numPage * 8
+  let init = (numPage-1) * 10
+  let end = numPage * 10
 
-  let cantPage = Math.floor(countries.length / 8)
+  let cantPage = Math.floor(countries.length / 10)
 
     return (
       <div className={style.container}>
@@ -25,7 +25,9 @@ const CardsContainer = ({countries}) => {
             />
           )
         } )}
-        <Paginate cantPage={cantPage}></Paginate>
+        <div className="paginate-section">
+          <Paginate cantPage={cantPage}></Paginate>
+        </div>
       </div>
     );
   };
