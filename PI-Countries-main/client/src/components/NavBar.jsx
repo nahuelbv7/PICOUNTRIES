@@ -5,7 +5,9 @@ import styles from "../styles/NavBar.module.css";
 const NavBar = () => {
   return (
     <nav className={styles.navbar}>
+      
       <h1>Countries APP</h1>
+      
       <ul className={styles.navbarMenu}>
         <li className={styles.navbarItem}>
           <Link to="/home" className={styles.h1}>HOME</Link>

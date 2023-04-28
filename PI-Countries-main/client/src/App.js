@@ -35,32 +35,34 @@ function App() {
 
 
 
-  function onSearch(id, dispatch) {
+   function onSearch(id) {
     axios.get(`http://localhost:3001/countries/${id}`)
-    .then((response) => {
-      if (response && response.data) {
-        dispatch(searchCountry(response.data));
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => {
+        if (response && response.data) {
+          dispatch(searchCountry(response.data));
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
+
 
   return (
     <div className="App">
       {showNavbar && <NavBar />}
-                       {/* condición ? expresión verdadera : expresión falsa */}
-      {location.pathname === "/home" ? <VerticalNav /> : null}
-      {location.pathname === "/home" && (
-        <SearchBar onSearch={(country) => onSearch(country, dispatch)} />
-      )}
+      {location.pathname === "/home" ? (
+        <>
+          <VerticalNav onSearch={(country) => onSearch(country)} />
+         </>
+      ) : null}
       <Route exact path="/" component={Landing} />
-      <Route path="/home"><CardsContainer countries={countries} /></Route>
-      <Route path="/detail/:id" component={Detail} /> 
+      <Route path="/home">
+        <CardsContainer countries={countries} />
+      </Route>
+      <Route path="/detail/:id" component={Detail} />
       <Route path="/form" component={<Form />} />
-      <Route path="/about" component={About} /> 
-     
+      <Route path="/about" component={About} />
     </div>
   );
 }

@@ -24,7 +24,7 @@ export const SearchBar = ({ onSearch }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search Country"
           value={searchCountry} // Establece el valor del campo de búsqueda con el estado local
           onChange={handleInputChange} // Asigna la función handleInputChange al evento onChange del campo de búsqueda
         />
