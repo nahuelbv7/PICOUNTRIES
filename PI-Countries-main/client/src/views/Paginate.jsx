@@ -17,18 +17,20 @@ const Paginate = ({cantPage}) => {
 
 
     return (
-        <div classname={style.page}>
-           { numPage > 1 ? <div>  
-            <button onClick={prev}>PREV</button>
-            <p>{numPage-1}</p></div>:null}
-          
-            <h3>{numPage}</h3>
-            {
-                numPage < cantPage ?
-                <div><p>{numPage+1}</p>
-                <button onClick={next}>NEXT</button> </div>:null
+        <div className={style.container} >
+            { numPage > 1 ? 
+                <div>  
+                    <button onClick={prev} className={style.myButton}>PREV</button>
+                </div>
+                : null
             }
-            
+            <h3>{numPage}</h3>
+            { numPage < cantPage ?
+                <div>
+                    <button onClick={next} className={style.myButton}>NEXT</button>
+                </div>
+                : null
+            }
         </div>
     )
 }

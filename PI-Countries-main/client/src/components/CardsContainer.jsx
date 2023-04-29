@@ -14,6 +14,7 @@ const CardsContainer = ({countries}) => {
 
     return (
       <div className={style.container}>
+        <div className={style.countries}>
         {countries.slice(init, end).map((country) => {     // con el slice hago que se vean solo 8 hago un mapeo de countries del reducer
           return (
             <Card
@@ -24,10 +25,8 @@ const CardsContainer = ({countries}) => {
               id={country.id}
             />
           )
-        } )}
-        <div className="paginate-section">
-          <Paginate cantPage={cantPage}></Paginate>
-        </div>
+        } )}</div>
+         <div className={style.jhon}><Paginate cantPage={cantPage}></Paginate></div>
       </div>
     );
   };

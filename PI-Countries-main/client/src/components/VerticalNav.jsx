@@ -21,12 +21,15 @@ const VerticalNav = ({ onSearch }) => {
   return (
     <nav className={style.verticalNav}>
       <h1>Find</h1>
-      <SearchBar onSearch={onSearch} />
+     <SearchBar onSearch={onSearch} />
+     
       <select onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
         <option value="DEFAULT" disable>Select order</option>
         <option value="ascendent">Ascendent</option>
         <option value="descendent">Descendent</option>
       </select>
+
+
       <select onChange={filterContinent} name="filter" defaultValue={"DEFAULT"}>
         <option value="DEFAULT" disable>Continent</option>
         <option value="Asia">Asia</option>
