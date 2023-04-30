@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../styles/VerticalNav.module.css"
 import {SearchBar} from "./SearchBar";
 import {orderCountries, filterCountries} from "../redux/actions"
+import onuLogo from "../images/onu.png";
 
 const VerticalNav = ({ onSearch }) => {
   const dispatch = useDispatch();
@@ -20,17 +21,17 @@ const VerticalNav = ({ onSearch }) => {
 
   return (
     <nav className={style.verticalNav}>
-      <h1>Find</h1>
-     <SearchBar onSearch={onSearch} />
+       <img src={onuLogo} alt="Logo" className={style.logo} />
+      <SearchBar onSearch={onSearch} className={style.searchBar} />
      
-      <select onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
+     <select className={style.selector} onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
         <option value="DEFAULT" disable>Select order</option>
         <option value="ascendent">Ascendent</option>
         <option value="descendent">Descendent</option>
       </select>
 
 
-      <select onChange={filterContinent} name="filter" defaultValue={"DEFAULT"}>
+      <select className={style.selector} onChange={filterContinent} name="filter" defaultValue={"DEFAULT"}>
         <option value="DEFAULT" disable>Continent</option>
         <option value="Asia">Asia</option>
         <option value="Antarctica">Antarctica</option>
