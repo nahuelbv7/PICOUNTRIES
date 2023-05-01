@@ -2,8 +2,9 @@ import style from "../styles/About.module.css";
 
 const About = () => {
   return (
+    <div className={style.About}>
     <div className={style.container}>
-      <h1 className={style.title}>Henry Country Project</h1>
+      <h1 className={style.title}>Henry Countries Project</h1>
       <h2 className={style.subtitle}>Created by Nahuel Tovar</h2>
       <p className={style.description}>
         Welcome to the Henry Country Project, a demo project for the Henry
@@ -22,6 +23,7 @@ const About = () => {
           LinkedIn
         </a>
       </div>
+    </div>
     </div>
   );
 };

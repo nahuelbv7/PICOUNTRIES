@@ -27,7 +27,7 @@ body {
 }
 
 .img {
-    max-height: 120px;
+    max-height: 110px;
     object-fit: contain;
     border: 4px solid white;
 }

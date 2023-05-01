@@ -15,7 +15,7 @@ const VerticalNav = ({ onSearch }) => {
   }
 
   function filterContinent (e){
-    const { name, value } = e.target;
+    const { value } = e.target;
     dispatch(filterCountries(value))
   }
 

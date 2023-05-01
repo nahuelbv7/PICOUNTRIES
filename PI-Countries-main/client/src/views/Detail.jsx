@@ -15,6 +15,7 @@ const Detail = () => {
     }, [dispatch, id]);
 
     return (
+      <div className={style.detail}>
       <div key={country.id} className={style.container}>
         <img src={country.flag} alt={country.flag} className={style.flag} />
         <div className={style.info}>
@@ -25,6 +26,7 @@ const Detail = () => {
           <h3 className={style.h3}>Area: {country.area} km2</h3>
           <h3 className={style.h3}>Poblation: {country.poblation}</h3>
         </div>
+      </div>
       </div>
     );
 };

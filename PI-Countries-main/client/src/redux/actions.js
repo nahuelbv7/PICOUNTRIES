@@ -37,7 +37,7 @@ export const searchCountry = (id) => {
     const response = await axios.get(`http://localhost:3001/countries/${id}`);
     console.log(id)
     try {
-      dispatch({ type: SEARCH_COUNTRY, payload: response.data });
+      dispatch({ type: SEARCH_COUNTRY, payload: [response.data] });
     } catch (err) {
       console.log(err.message);
     }

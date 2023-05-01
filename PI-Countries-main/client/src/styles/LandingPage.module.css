@@ -1,28 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,900;1,600&family=Roboto:wght@500&family=Sigmar&display=swap');
 
-.div {
-  align-items: center;
-  display:flex;
-  justify-content: center;
-  margin-top: 24rem;
-  margin-left: 90rem;
+.landing {
+  min-height: 100vh; 
+  background: url("../images/cgif.gif");
 }
 
+
+.div {
+  position: absolute;
+  top: 50%;
+  left: 69%;
+  transform: translate(-50%, -50%);
+}
+
+
+
 .button {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     padding: 16px 30px;
     font-size: 2rem;
-    border-radius: 10px;
-    background-color: rgb(1, 38, 72);
-    opacity: 0.8;
+    border-radius: 50px;
+    background-color: rgb(0, 191, 159);
+    opacity: 0.9;
     text-transform: uppercase;
-    letter-spacing: 0.3rem;
-    transition: 0.5s;
+    letter-spacing: 0.2 rem;
+    transition: 0.9s;
     font-family: 'Poppins', sans-serif;
   }
 
   .button:hover {
     color: red;
-    text-decoration:dashed blue ;
+    
    }
   

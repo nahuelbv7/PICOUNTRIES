@@ -39,7 +39,7 @@ function App() {
     axios.get(`http://localhost:3001/countries/${id}`)
       .then((response) => {
         if (response && response.data) {
-          dispatch(searchCountry(response.data));
+          dispatch(searchCountry(id));;
         }
       })
       .catch((error) => {
