@@ -1,22 +1,31 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "../styles/VerticalNav.module.css"
 import {SearchBar} from "./SearchBar";
-import {orderCountries, filterCountries} from "../redux/actions"
-import onuLogo from "../images/onu.png";
+import {orderCountries, filterPopulation} from "../redux/actions"
+import onuLogo from "../images/arg.gif";
 
 const VerticalNav = ({ onSearch }) => {
   const dispatch = useDispatch();
-  // const { country } = useSelector((state) => state);
+
   
 
   function handleOrder(e) {
-    const { name, value } = e.target
+    const { value } = e.target
     dispatch(orderCountries(value))
   }
 
-  function filterContinent (e){
+  const filterContinent = (e) => {
+    const continent = e.target.value;
+    if (continent === "ALL") {
+      dispatch({ type: "RESTORE_ORIGINAL_COUNTRIES" });
+    } else {
+      dispatch({ type: "FILTER", payload: continent });
+    }
+  };
+
+  function populationF (e) {
     const { value } = e.target;
-    dispatch(filterCountries(value))
+    dispatch(filterPopulation(value));
   }
 
   return (
@@ -24,15 +33,21 @@ const VerticalNav = ({ onSearch }) => {
        <img src={onuLogo} alt="Logo" className={style.logo} />
       <SearchBar onSearch={onSearch} className={style.searchBar} />
      
-     <select className={style.selector} onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
+    <div className={style.filters}>
+      <select className={style.selector1} onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
         <option value="DEFAULT" disable>Select order</option>
         <option value="ascendent">Ascendent</option>
         <option value="descendent">Descendent</option>
       </select>
+      <select className={style.selector1} onChange={populationF} name="pop" defaultValue={"DEFAULT"}>
+        <option value="DEFAULT" disable>Population</option>
+        <option value="ascendent">High</option>
+        <option value="descendent">Low</option>
+      </select>
+      </div> 
 
-
-      <select className={style.selector} onChange={filterContinent} name="filter" defaultValue={"DEFAULT"}>
-        <option value="DEFAULT" disable>Continent</option>
+      <select className={style.selector2} onChange={filterContinent} name="filter" defaultValue={"DEFAULT"}>
+      <option value="ALL">All Continents</option>
         <option value="Asia">Asia</option>
         <option value="Antarctica">Antarctica</option>
         <option value="Africa">Africa</option>

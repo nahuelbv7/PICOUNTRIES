@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCountries, searchCountry } from "./redux/actions";
 import VerticalNav from "./components/VerticalNav";
 import axios from "axios";
-import { SearchBar } from "./components/SearchBar";
+
 
 
 

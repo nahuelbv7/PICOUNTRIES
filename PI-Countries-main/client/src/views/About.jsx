@@ -8,10 +8,7 @@ const About = () => {
       <h2 className={style.subtitle}>Created by Nahuel Tovar</h2>
       <p className={style.description}>
         Welcome to the Henry Country Project, a demo project for the Henry
-        bootcamp. This project was created using React and Next.js, and it
-        showcases the skills and knowledge learned during the bootcamp. Feel
-        free to explore the different pages and features of the project, and
-        don't hesitate to reach out if you have any questions or comments!
+        bootcamp. This project was created using the skills and knowledge learned during the bootcamp.
       </p>
       <div className={style.links}>
         <a

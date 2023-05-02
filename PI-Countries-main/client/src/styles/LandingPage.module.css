@@ -16,7 +16,6 @@
 
 
 .button {
-    color: rgb(0, 0, 0);
     padding: 16px 30px;
     font-size: 2rem;
     border-radius: 50px;
@@ -24,12 +23,12 @@
     opacity: 0.9;
     text-transform: uppercase;
     letter-spacing: 0.2 rem;
-    transition: 0.9s;
+    transition: 0.5s;
     font-family: 'Poppins', sans-serif;
   }
 
   .button:hover {
     color: red;
-    
+    background-color: black;
    }
   

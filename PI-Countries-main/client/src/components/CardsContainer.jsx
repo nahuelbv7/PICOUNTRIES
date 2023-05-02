@@ -15,7 +15,7 @@ const CardsContainer = ({countries}) => {
     return (
       <div className={style.container}>
         <div className={style.countries}>
-        {countries.slice(init, end).map((country) => {     // con el slice hago que se vean solo 8 hago un mapeo de countries del reducer
+        {countries.slice(init, end).map((country) => {     // con el slice hago que se vean solo 10 hago un mapeo de countries del reducer
           return (
             <Card
               flag={country.flag}

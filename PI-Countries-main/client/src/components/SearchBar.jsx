@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import style from "../styles/SearchBar.module.css"; // importa el archivo CSS con los estilos de la barra de búsqueda
 
 export const SearchBar = ({ onSearch }) => {

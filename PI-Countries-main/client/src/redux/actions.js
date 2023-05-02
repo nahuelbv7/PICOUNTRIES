@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER } from "./actions-types";
+import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION } from "./actions-types";
 
 
 
@@ -35,7 +35,6 @@ export const getCountryById = (id) => {
 export const searchCountry = (id) => {
   return async function (dispatch) {
     const response = await axios.get(`http://localhost:3001/countries/${id}`);
-    console.log(id)
     try {
       dispatch({ type: SEARCH_COUNTRY, payload: [response.data] });
     } catch (err) {
@@ -71,5 +70,15 @@ export const orderCountries = (order) => {
   return {
     type: ORDER,
     payload: order
+  }
+}
+
+
+/// order filter X population
+export const filterPopulation = (population) => {
+  console.log(population)
+  return {
+    type: POPULATION,
+    payload: population
   }
 }
