@@ -122,31 +122,19 @@ const getCountryById = async (req, res) => {
 
 
 const getCountryByName = async (req, res) => {
-	const name = req.query.name;
-  
-	try {
-	  const country = await Country.findOne({
-		where: {
-		  name: {
-			[Op.iLike]: `%${name}%`, 
-		  },
+	const { name } = req.params;
+	const countries = await Country.findAll({
+	  where: {
+		name: {
+		  [Op.like]: name,
 		},
-		include: [
-		  {
-			model: Activity,
-			attributes: ["name", "difficulty", "duration", "season"],
-			through: { attributes: [] },
-		  },
-		],
-	  });
+	  },
+	});
   
-	  if (country) {
-		return res.status(200).json(country);
-	  } else {
-		return res.status(404).send("País no encontrado");
-	  }
-	} catch (error) {
-	  console.log(error);
+	if (countries.length > 0) {
+	  return res.status(200).json(countries);
+	} else {
+	  return res.status(404).send("País no encontrado");
 	}
   };
 

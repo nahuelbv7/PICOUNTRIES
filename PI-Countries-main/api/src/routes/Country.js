@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { getAllCountries, getCountryById, getCountryByName } = require("../controllers/countrycontrollers");
 const router = Router();
 
+
 //Ruta general de todos los paises o por Query
 router.get("/countries", getAllCountries);
 
@@ -9,7 +10,7 @@ router.get("/countries", getAllCountries);
 router.get("/countries/:idPais", getCountryById);
 
 //Ruta por name
-router.get("/countries/:name", getCountryByName);
+router.get('/countries/name/:name', getCountryByName);
 
 
 module.exports = router;

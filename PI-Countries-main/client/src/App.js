@@ -35,18 +35,19 @@ function App() {
 
 
 
-   function onSearch(id) {
-    axios.get(`http://localhost:3001/countries/${id}`)
+  function onSearch(searchCountry, dispatch) {
+    axios
+      .get(`http://localhost:3001/countries?name=${searchCountry}`)
       .then((response) => {
-        if (response && response.data) {
-          dispatch(searchCountry(id));;
+        if (response && response.data && response.data.name) {
+          dispatch(searchCountry(response.data.name));
         }
       })
       .catch((error) => {
         console.error(error);
       });
   }
-
+  
 
   return (
     <div className="App">
