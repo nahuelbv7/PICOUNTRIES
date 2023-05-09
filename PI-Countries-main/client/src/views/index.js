@@ -1,13 +1,13 @@
 import Detail from "./Detail";
 import Landing from "./LandingPage";
-import Form from "./Form";
-import About from "./About";
 
+import About from "./About";
+import CreatAct from "./Activities"
 
 export {
     Detail,
     Landing,
-
-    Form,
+    CreatAct,
+   
     About,
 }

@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 
 const CardsContainer = ({countries}) => {    
   const {numPage} = useSelector((state) => state)
-  
+   
+
   let init = (numPage-1) * 10
   let end = numPage * 10
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION } from "./actions-types";
+import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, CREATE_ACTIVITY } from "./actions-types";
 
 
 
@@ -33,9 +33,11 @@ export const getCountryById = (id) => {
 
 
 export const searchCountry = (name) => {
+  let test = name.toLowerCase();
+  test = test.charAt(0).toUpperCase()+test.substring(1);
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/countries/name/${name}`);
+      const response = await axios.get(`http://localhost:3001/countries/name/${test}`);
       dispatch({ type: SEARCH_COUNTRY, payload: response.data });
     } catch (err) {
       console.log(err.message);
@@ -82,3 +84,28 @@ export const filterPopulation = (population) => {
     payload: population
   }
 }
+
+
+//////////////////////ACTIVITIES//////////////////////////
+export const createActivity =  (activity) => {
+  return async function (dispatch) {
+  const response = await fetch('http://localhost:3001/activities', {method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(activity)
+    });
+    const responsJson = await response.json();
+
+
+      try{
+        console.log(responsJson)
+        dispatch({type:CREATE_ACTIVITY,payload:responsJson});
+      }
+      catch(err)
+      {
+        console.log(err.message);
+      }}
+}
+  

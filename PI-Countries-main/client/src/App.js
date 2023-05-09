@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Route, useLocation } from 'react-router-dom';
-import { Form, Detail, Landing, About } from "./views";
+import { Form, Detail, Landing, About,CreatAct } from "./views";
 import NavBar from "./components/NavBar";
 import CardsContainer from './components/CardsContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, searchCountry } from "./redux/actions";
+import { getCountries, searchCountry,  } from "./redux/actions";
 import VerticalNav from "./components/VerticalNav";
 import axios from "axios";
 
@@ -24,28 +24,28 @@ function App() {
 
   const countries = useSelector((state) => state.country); // Obtiene el estado de los países de Redux usando useSelector hook de Redux.
 
-  // Lógica para ocultar la barra de navegación en la página de aterrizaje
+
   useEffect(() => {
     if (location.pathname === "/") { // Compara la ubicación actual con la ruta de la página de aterrizaje "/"
-      setShowNavbar(false); // Si la ubicación es la de la página de aterrizaje, oculta la barra de navegación
+      setShowNavbar(false); // Si la ubicación es la de la página /, oculta la barra de navegación
     } else {
-      setShowNavbar(true); // Si la ubicación es distinta a la de la página de aterrizaje, muestra la barra de navegación
+      setShowNavbar(true); // Si la ubicación es distinta a la de la página /, muestra la barra de navegación
     }
   }, [location]);
 
 
 
   function onSearch(searchCountry, dispatch) {
-    axios
-      .get(`http://localhost:3001/countries?name=${searchCountry}`)
+    
+       axios.get(`http://localhost:3001/countries?name=${searchCountry}`)
       .then((response) => {
         if (response && response.data && response.data.name) {
           dispatch(searchCountry(response.data.name));
         }
-      })
+     })
       .catch((error) => {
-        console.error(error);
-      });
+      console.error(error);
+     });
   }
   
 
@@ -62,7 +62,7 @@ function App() {
         <CardsContainer countries={countries} />
       </Route>
       <Route path="/detail/:id" component={Detail} />
-      <Route path="/form" component={<Form />} />
+      <Route path="/activities" component={CreatAct} />
       <Route path="/about" component={About} />
     </div>
   );

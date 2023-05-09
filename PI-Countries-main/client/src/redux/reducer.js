@@ -1,11 +1,12 @@
-import { GET_DATA, GET_ID, GET_ACTIVITIES,  SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, RESTORE_ORIGINAL_COUNTRIES } from "./actions-types";
+import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, RESTORE_ORIGINAL_COUNTRIES } from "./actions-types";
 
 const initialState = { 
     numPage: 1,      //CON ESTO VOY A CREAR UNA FUNCION PARA QUE VAYA AUMENTANDO O DISMINUYENDO LA PAGINACION
     country:[],
     filteredCountry: [], 
     detail: [],
-    activities: []          
+    originalCountries: [],     
+    activities: [],  
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,11 +24,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 detail:action.payload
             }
-        case GET_ACTIVITIES:
-            return{
-                ...state,
-                activities: action.payload
-            }
+      
         case SEARCH_COUNTRY:
             return {
                 ...state,
@@ -111,9 +108,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 poblation: [...newP],
             };
+            
+          
         }
+        
 
+        
     }
+ ///
  
     
 

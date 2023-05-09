@@ -1,0 +1,91 @@
+.bory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   backdrop-filter: blur(5px) saturate(130%);
+  
+}
+
+.form {
+    margin-bottom: 180px;
+    background-color: rgb(12, 3, 20);
+    opacity: 0.8;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+}
+
+.pokay {
+    color: green;
+    font-size: 14px;
+}
+
+.pbad {
+    color: red;
+    font-size: 14px;
+}
+
+.tittle {
+    font-size: 54px;
+    text-decoration: underline;
+    color: green
+}
+
+.subtitulos {
+     font-size: 26px;
+    color: grey
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: green;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #ff0000;
+  }
+
+  .input {
+  text-align: center;
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+
+  .option {
+    /* Estilos para la opción */
+    font-size: 16px;
+    color: #333;
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .option:hover {
+    /* Estilos al pasar el cursor sobre la opción */
+    background-color: #f2f2f2;
+  }
