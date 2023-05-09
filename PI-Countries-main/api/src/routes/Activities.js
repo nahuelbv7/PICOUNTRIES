@@ -1,12 +1,13 @@
 const { Router } = require('express');
-const activitiesCtrl = require('../controllers/activitycontrollers.js');
+// const activitiesCtrl = require('../controllers/activitycontrollers.js');
+const { getActivities, postActivity} = require("../controllers/activitycontrollers")
 
 const router = Router();
 
 // Ruta para desplegar actividades
-router.get('/activities', activitiesCtrl.getActivities);
+router.get('/activities', getActivities);
 
 // Ruta para postear actividades
-router.post('/activities', activitiesCtrl.postActivity);
+router.post('/activities', postActivity);
 
 module.exports = router;

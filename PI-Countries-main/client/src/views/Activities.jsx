@@ -11,13 +11,17 @@ const CreatAct = () => {
 
 
   /// estado local para guardar
- const [data, setData] = useState({name: "", difficulty: 0, duration: 0, season: ['Verano', 'Invierno', 'Primavera', "Otoño"], countries: [], choosenSeason: []});
+ const [data, setData] = useState({name: "", difficulty: 0, duration: 0, season: ["Verano","Otoño","Invierno","Primavera"], countries: [], choosenSeason: []});
+
+
 
 //// 
   const handleChange = (e) => {
+    console.log(data.countries)
     setData({
       ...data,
      [e.target.name] : e.target.value,
+
   });
   }
 ///
@@ -45,13 +49,15 @@ const handleSelect = (e) => {
   ///
 
   const handleCountries = (e) => {
-    const countrySelected = e.target.value;
-    if (!data.countries.includes(countrySelected)) {
-      setData({
+    let dataFromSelect = e.target.value.split(",");
+    // const countrySelected = e.target.value;
+    console.log(dataFromSelect[1])
+     if (!data.countries.includes(dataFromSelect[1])) {
+       setData({
         ...data,
-        countries: [...data.countries, countrySelected]
-      });
-    }
+        countries: [...data.countries, dataFromSelect[1]]
+     });
+     }
   };
 
   const handleSubmit = (e) => {
@@ -123,7 +129,7 @@ const handleSelect = (e) => {
         <select onChange={handleCountries}>
           <option disabled readOnly>Countries</option>
           {country.map((d) => (
-            <option value={d.name} key={d.id}>
+            <option value={[d.name, d.id]} key={d.id}>
               {d.name}
             </option>
           ))}
