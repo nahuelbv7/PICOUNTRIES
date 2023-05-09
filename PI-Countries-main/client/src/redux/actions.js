@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, GET_ACTIVITIES, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, CREATE_ACTIVITY } from "./actions-types";
+import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, CREATE_ACTIVITY,FETCH_ACTIVITIES } from "./actions-types";
 
 
 
@@ -78,7 +78,6 @@ export const orderCountries = (order) => {
 
 /// order filter X population
 export const filterPopulation = (population) => {
-  console.log(population)
   return {
     type: POPULATION,
     payload: population
@@ -109,3 +108,18 @@ export const createActivity =  (activity) => {
       }}
 }
   
+
+//FILTER activities
+
+///
+export const fetchActivities = () => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("http://localhost:3001/activities");
+      const activities = await response.json();
+      dispatch({ type: FETCH_ACTIVITIES,  payload: activities.activities });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
