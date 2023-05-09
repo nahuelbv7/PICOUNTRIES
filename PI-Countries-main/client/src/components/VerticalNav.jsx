@@ -9,18 +9,25 @@ import { useSelector } from "react-redux";
 const VerticalNav = () => {
   const dispatch = useDispatch();
 
+  // Obtenemos las actividades turisticas desde el estado global con el hook useSelector
   const activities = useSelector((state) => state.activities);
 
-    // Obtener las actividades turísticas del backend cuando el componente se monte
+  // Utilizamos useEffect para hacer una llamada al backend y obtener las actividades turisticas
     useEffect(() => {
-      dispatch(fetchActivities());
-    }, [dispatch]);
+      dispatch(fetchActivities());    // Llamada al backend para obtener las actividades
+    }, [dispatch]);                   // Indicamos que se ejecute cada vez que se actualiza el estado de dispatch
 
+    
+
+
+  // Funcion para ordenar los paises  
   const handleOrder = (e) => {
     const { value } = e.target;
-    dispatch(orderCountries(value));
+    dispatch(orderCountries(value));     // Llamamos a la accion orderCountries con el valor seleccionado
   };
 
+
+  // Funcion para filtrar por continente
   const filterContinent = (e) => {
     const continent = e.target.value;
     if (continent === "ALL") {
@@ -30,13 +37,17 @@ const VerticalNav = () => {
     }
   };
 
+
+  // Funcion para filtrar por poblacion
   const populationF = (e) => {
     const { value } = e.target;
-    dispatch(filterPopulation(value));
+    dispatch(filterPopulation(value));  // Llamamos a la accion filterPopulation con el valor seleccionado
   };
 
+
+  // Funcion para buscar paises
   const handleSearch = (name) => {
-    dispatch(searchCountry(name));
+    dispatch(searchCountry(name));  // Llamamos a la accion searchCountry con el nombre del pais buscado
   };
   
 

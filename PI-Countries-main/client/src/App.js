@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Route, useLocation } from 'react-router-dom';
-import { Form, Detail, Landing, About,CreatAct } from "./views";
+import { Detail, Landing, About,CreatAct } from "./views";
 import NavBar from "./components/NavBar";
 import CardsContainer from './components/CardsContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, searchCountry,  } from "./redux/actions";
+import { getCountries } from "./redux/actions";
 import VerticalNav from "./components/VerticalNav";
 import axios from "axios";
 

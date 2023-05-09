@@ -7,15 +7,15 @@ import style from "../styles/Activities.module.css"
 
 const CreatAct = () => {
  
+  // Se establece la conexión con el store de Redux utilizando el hook "useDispatch()"
   const dispatch = useDispatch();
 
 
-  /// estado local para guardar
+  // Se define un estado local con el hook "useState()" que contiene los datos de la actividad que se va a crear
  const [data, setData] = useState({name: "", difficulty: 0, duration: 0, season: ["Verano","Otoño","Invierno","Primavera"], countries: [], choosenSeason: []});
 
 
-
-//// 
+  // Se define una función "handleChange()" que actualiza el estado "data" cada vez que se realiza un cambio en algún input del formulario de creación de actividad
   const handleChange = (e) => {
     console.log(data.countries)
     setData({
@@ -24,7 +24,8 @@ const CreatAct = () => {
 
   });
   }
-///
+// Se define una función "handleSelect()" que actualiza el estado "data" cuando se selecciona una estación en el select de estaciones disponibles
+// Si la estación seleccionada no está incluida en el array "choosenSeason" de "data", se agrega a este array
 const handleSelect = (e) => {
   const selectedSeason = e.target.value;
   if (!data.choosenSeason.includes(selectedSeason)) {
@@ -34,23 +35,16 @@ const handleSelect = (e) => {
     });
   }
 }
-////
-  // const handleDelete = (e) => {
-  //   setData({
-  //     ...data,
-  //    choosenSeason : []
-  //  })
-  // }
 
-  /////
-
-  const country = useSelector((state) => state.country);
+// Se utiliza el hook "useSelector()" para obtener el array de países del store de Redux
+const country = useSelector((state) => state.country);
   
-  ///
-
+ 
+// Se define una función "handleCountries()" que actualiza el estado "data" cuando se selecciona un país en el select de países disponibles
+// Se divide la opción seleccionada en dos partes utilizando el método "split()": el código ISO del país y su nombre
+// Si el nombre del país no está incluido en el array "countries" de "data", se agrega a este array
   const handleCountries = (e) => {
     let dataFromSelect = e.target.value.split(",");
-    // const countrySelected = e.target.value;
     console.log(dataFromSelect[1])
      if (!data.countries.includes(dataFromSelect[1])) {
        setData({
@@ -60,6 +54,8 @@ const handleSelect = (e) => {
      }
   };
 
+   // Se define una función "handleSubmit()" que valida los datos de la actividad utilizando la función "validate()" y luego crea la actividad utilizando la acción "createActivity()" del store de Redux
+  // La validación de datos es opcional y depende de cómo se haya implementado la función "validate()"
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createActivity(data))

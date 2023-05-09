@@ -2,8 +2,9 @@ const { Activity, Country } = require('../db.js');
 const { Op } = require("sequelize");
  
 // Controlador para obtener actividades
- const getActivities = async (req, res) => {
+const getActivities = async (req, res) => {
     try {
+         // Buscamos las acts en la base de datos
         const activities = await Activity.findAll();
         if (activities.length) {
             res.status(200).json(activities);
@@ -16,10 +17,11 @@ const { Op } = require("sequelize");
 }
 
 
+// Controlador para crear una nueva act
 const postActivity = async (req, res) => {
     try {
 
-        //  Extraemos los datos de la solicitud
+        // Extraemos los datos de la solicitud
         const { name, difficulty, duration, choosenSeason, countries } = req.body;
         if (name && difficulty && duration && choosenSeason && countries) {
             const activity = await Activity.create({
@@ -29,14 +31,15 @@ const postActivity = async (req, res) => {
                 season: choosenSeason.join(", ")
             });
            
-            // Para cada país proporcionado en la solicitud
+            // Para cada pais proporcionado en la solicitud
            
             countries.forEach(async (countries) => {
                 
-                 // Busca el país correspondiente en la base de datos
+                // Busco el pais correspondiente en la base de datos
                 const country = await Country.findOne({
                     where: { id: { [Op.iLike]: `%${countries}%` } }
                 });
+                // Agregamos la actividad recien creada al pais encontrado
                 await country?.addActivity(activity);
             });
 

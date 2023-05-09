@@ -6,13 +6,13 @@ import style from "../styles/Detail.module.css";
 
 const Detail = () => {
     const dispatch = useDispatch();
-    const { id } = useParams();
+    const { id } = useParams();// Se utiliza el hook useParams para obtener el id del país que se quiere mostrar.
     console.log(id)
-    const country = useSelector((state) => state.detail);
+    const country = useSelector((state) => state.detail);// Se utiliza el hook useSelector para obtener la información del país desde el estado global de la aplicación.
   
-    useEffect(() => {
-      dispatch(getCountryById(id));  
-    }, [dispatch, id]);
+    useEffect(() => { // Se utiliza el hook useEffect para realizar una acción cuando se monta o se actualiza el componente.
+      dispatch(getCountryById(id));  // Se despacha la acción que se encarga de obtener la información del país con el id especificado.
+    }, [dispatch, id]); // Especifico que la acción se debe realizar cuando el id o el dispatch cambien.
 
     return (
       <div className={style.detail}>

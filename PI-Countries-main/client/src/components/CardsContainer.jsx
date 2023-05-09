@@ -5,18 +5,20 @@ import { useSelector } from "react-redux";
 
 
 const CardsContainer = ({countries}) => {    
-  const {numPage} = useSelector((state) => state)
+  const {numPage} = useSelector((state) => state) // Obtengo la pagina actual del estado de Redux
    
 
-  let init = (numPage-1) * 10
-  let end = numPage * 10
+  let init = (numPage-1) * 10 // Calcula el índice de inicio de la página actual
+  let end = numPage * 10 // Obtiene la página actual del estado de Redux
 
-  let cantPage = Math.floor(countries.length / 10)
+
+  let cantPage = Math.floor(countries.length / 10)  // Calcula la cantidad total de páginas necesarias para mostrar todos los paises
+
 
     return (
       <div className={style.container}>
         <div className={style.countries}>
-        {countries.slice(init, end).map((country) => {     // con el slice hago que se vean solo 10 hago un mapeo de countries del reducer
+        {countries.slice(init, end).map((country) => {    
           return (
             <Card
               flag={country.flag}

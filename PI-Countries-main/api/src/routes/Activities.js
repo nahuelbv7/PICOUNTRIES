@@ -1,5 +1,5 @@
 const { Router } = require('express');
-// const activitiesCtrl = require('../controllers/activitycontrollers.js');
+
 const { getActivities, postActivity} = require("../controllers/activitycontrollers")
 
 const router = Router();

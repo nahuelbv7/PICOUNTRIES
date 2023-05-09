@@ -4,11 +4,11 @@ const { Country, Activity } = require("../db.js");
 
 //trae los paises de la API
 const getApiInfo = async () => {
-	// Hacemos una petición a la API
+	// Hacemos una peticion a la API
 	const response = await axios.get("https://restcountries.com/v3/all");
 
 	const map = response.data.map((e) => {
-		// Mapeamos la respuesta de la API a un objeto que represente cada país
+		// Mapeamos la respuesta de la API a un objeto que represente cada pais
 		const country = {
 			id: e.cca3,
 			name: e.name.common,
@@ -21,19 +21,19 @@ const getApiInfo = async () => {
 		};
 		return country;
 	});
-	// Retornamos el array de países
+	// Retornamos el array de paises
 	return map;
 };
 
-// Función asincrónica que carga los países en la base de datos
+// Funcion asincronica que carga los paises en la base de datos
 const countriesToDb = async () => {
 	try {
-		// Buscamos si ya existen países en la base de datos
+		// Buscamos si ya existen paises en la base de datos
 		const countries = await Country.findAll();
-		// Si no hay países en la base de datos, cargamos los datos de la API en la base de datos
+		// Si no hay paises en la base de datos, cargamos los datos de la API en la base de datos
 		if (!countries.length) {
 			const array = await getApiInfo();
-			await Country.bulkCreate(array);
+			await Country.bulkCreate(array);// bulkCreate es una herramienta para insertar rápidamente múltiples registros en una base de datos a través de una sola consulta
 		}
 	} catch (error) {
 		console.log(error);
@@ -42,7 +42,7 @@ const countriesToDb = async () => {
 
 // Controlador de la ruta GET /countries
 const getAllCountries = async (req, res) => {
-	// Cargamos los países en la base de datos antes de hacer la consulta
+	// Cargamos los paises en la base de datos antes de hacer la consulta
 	await countriesToDb();
 
 	// Obtenemos el parámetro name de la consulta

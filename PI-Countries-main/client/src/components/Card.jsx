@@ -2,7 +2,7 @@ import style from "../styles/Card.module.css";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
-    console.log(props.id)
+    
     return (
       <div className={style.card}>
         <img src={props.flag} alt={`Bandera de ${props.name}`} className={style.img} />
