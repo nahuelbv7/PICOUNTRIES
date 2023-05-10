@@ -42,7 +42,7 @@ export const validate = (data) =>{
 
 
       // Verifica que todos los campos requeridos hayan pasado la validacion.
-    if(obj.name && obj.difficulty && obj.duration && obj.choosenSeason && obj.country)
+    if(obj.name && obj.difficulty && obj.duration)
     obj.allokay = true;
     else obj.allokay = false;
 
