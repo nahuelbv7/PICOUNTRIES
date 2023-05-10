@@ -54,3 +54,23 @@ body {
     margin-left:500% ;
   }
 
+.button{
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(12, 3, 20);
+  color: #fafafa;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s;
+  position: absolute;
+  width: 200px;
+  margin-left: 1300px;
+  margin-top: -7.52px;
+  font-size: 22px;
+}
+
+.button:hover {
+  color: red;
+}

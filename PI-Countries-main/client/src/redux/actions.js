@@ -130,3 +130,7 @@ export const fetchActivities = () => {
 
 export const filterActCountry = (activity) => {
   return {type: FILTERACT, payload: activity}}
+
+
+
+  

@@ -115,7 +115,6 @@ const country = useSelector((state) => state.country);
           placeholder=""
           value={data.choosenSeason}
           readOnly 
-          // onClick={handleDelete}
         />
       </div>
 
