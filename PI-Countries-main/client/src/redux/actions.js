@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, CREATE_ACTIVITY,FETCH_ACTIVITIES } from "./actions-types";
+import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, CREATE_ACTIVITY,FILTERACT, FETCH_ACTIVITIES } from "./actions-types";
 
 
 
@@ -114,12 +114,19 @@ export const createActivity =  (activity) => {
 ///
 export const fetchActivities = () => {
   return async (dispatch) => {
+    
     try {
       const response = await fetch("http://localhost:3001/activities");
       const activities = await response.json();
-      dispatch({ type: FETCH_ACTIVITIES,  payload: activities.activities });
+      console.log(activities)
+      dispatch({ type: FETCH_ACTIVITIES,  payload: activities });
     } catch (error) {
       console.error(error);
     }
   };
 };
+
+
+
+export const filterActCountry = (activity) => {
+  return {type: FILTERACT, payload: activity}}

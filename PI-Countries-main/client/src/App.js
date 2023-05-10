@@ -61,6 +61,7 @@ function App() {
       <Route path="/home">
         <CardsContainer countries={countries} />
       </Route>
+      
       <Route path="/detail/:id" component={Detail} />
       <Route path="/activities" component={CreatAct} />
       <Route path="/about" component={About} />

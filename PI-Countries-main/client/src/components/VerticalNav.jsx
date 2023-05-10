@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import style from "../styles/VerticalNav.module.css"
-import { searchCountry, orderCountries, filterPopulation,  fetchActivities, } from "../redux/actions"
+import { searchCountry, orderCountries, filterPopulation,  fetchActivities, filterActCountry } from "../redux/actions"
 import { SearchBar } from "./SearchBar";
 import onuLogo from "../images/arg.gif";
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ const VerticalNav = () => {
     useEffect(() => {
       dispatch(fetchActivities());    // Llamada al backend para obtener las actividades
     }, [dispatch]);                   // Indicamos que se ejecute cada vez que se actualiza el estado de dispatch
-
+    console.log(activities)
     
 
 
@@ -50,6 +50,10 @@ const VerticalNav = () => {
     dispatch(searchCountry(name));  // Llamamos a la accion searchCountry con el nombre del pais buscado
   };
   
+
+  const handleSelect = (e) => {
+    dispatch(filterActCountry(e.target.value))
+  }
 
   return (
     <nav className={style.verticalNav}>
@@ -98,14 +102,14 @@ const VerticalNav = () => {
         <option value="Oceania">Oceania</option>
       </select>
     
-      <select className={style.selector2} onChange={fetchActivities}>
-  <option value="">All Activities</option>
-  {activities.map((activity) => (
-    <option key={activity.id} value={activity.name}>
-      {activity.name}
-    </option>
-  ))}
-</select>
+      <select className={style.selector2} onChange={handleSelect}>
+        <option value="">Activities</option>
+        {activities.map((activity) => (
+          <option key={activity.id} value={activity.name}>
+            {activity.name}
+          </option>
+        ))}
+      </select>
      
     </nav>
   );

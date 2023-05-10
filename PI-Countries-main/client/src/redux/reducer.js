@@ -1,4 +1,4 @@
-import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, RESTORE_ORIGINAL_COUNTRIES, FILTERACT } from "./actions-types";
+import { GET_DATA, GET_ID, SEARCH_COUNTRY, NEXT_PAGE, PREV_PAGE, FILTER, ORDER, POPULATION, RESTORE_ORIGINAL_COUNTRIES, FILTERACT, FETCH_ACTIVITIES } from "./actions-types";
 
 
 //DEFINIMOS ESTADO INICIAL DE LA APP
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
         default:
         return state;  // Si la acción no coincide con ninguna de las opciones, se devuelve el estado actual
         case GET_DATA:
-            return{
+           return{
                 ...state,
                 country : action.payload,    // Se actualiza el estado de los paises
             }
@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
         case RESTORE_ORIGINAL_COUNTRIES:
                 return {
                     ...state,
-                    country: state.originalCountry || state.country,    // Se restaura el estado de los países originales
+                    country: [...state.originalCountry] || [...state.country],    // Se restaura el estado de los países originales
                     originalCountry: null,
                     };
 
@@ -114,26 +114,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 poblation: [...newP],
             };
-            // La acción "FILTERACT" maneja el filtrado de países según su actividad
-            case FILTERACT:
-                 // Se utiliza el método "filter()" en el array "originalCountriesAct" para filtrar los países según si tienen una actividad específica
-                const originalCountriesAct = state.originalCountry || state.country
-                const newFilterAct = originalCountriesAct.filter((c) => {
-                // Se busca la actividad especificada en el array "activities" del país mediante el método "find()"
-                  const hasActivity = c.activities.find((activity) => activity.name === action.payload)
-                  return hasActivity
-                })
-                 
-                // Se devuelve el nuevo estado con la lista de países filtrada según la actividad
-                return {
-                  ...state,
-                  country: newFilterAct,
-                  originalCountry: originalCountriesAct,
-                }
-          
-        }
+           
+            
+            case FETCH_ACTIVITIES:
+                return {...state, activities: action.payload}
         
-
+        
+            case FILTERACT:
+                state.country.filter((c) => {
+               c.Activities.filter((a) => {if(a.name === action.payload) state.filteredCountry.push(c)})
+                })
+                console.log(state.filteredCountry)
+                return {...state, 
+                   country: [...state.filteredCountry]
+              }}
         
     }
 
