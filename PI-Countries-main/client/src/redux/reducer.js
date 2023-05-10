@@ -97,7 +97,7 @@ const reducer = (state = initialState, action) => {
                 });
             }
             else
-            {   newP = state.country.sort((a, b) => {   // Se utiliza el método "sort()" del array "state.country" para ordenar los objetos según su propiedad "poblation"
+            {   newP = state.country.sort((a, b) => {   // Utilizo el método "sort()" del array "state.country" para ordenar los objetos según su propiedad "poblation"
                     if(a.poblation < b.poblation) { 
                         return -1;
                     }
@@ -117,16 +117,17 @@ const reducer = (state = initialState, action) => {
            
             
             case FETCH_ACTIVITIES:
-                return {...state, activities: action.payload}
+                return {...state, activities: action.payload} // Actualizamos el estado con las actividades 
         
         
             case FILTERACT:
+                // Filtramos los paises y actividades 
                 state.country.filter((c) => {
-               c.Activities.filter((a) => {if(a.name === action.payload) state.filteredCountry.push(c)})
+               c.Activities.filter((a) => {if(a.name === action.payload) state.filteredCountry.push(c)}) // Agregamos el país al array filteredCountry
                 })
                 console.log(state.filteredCountry)
                 return {...state, 
-                   country: [...state.filteredCountry]
+                   country: [...state.filteredCountry]  // Actualizamos el estado del pais con el array filteredCountry
               }}
         
     }

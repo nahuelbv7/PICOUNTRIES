@@ -111,7 +111,6 @@ export const createActivity =  (activity) => {
 
 //FILTER activities
 
-///
 export const fetchActivities = () => {
   return async (dispatch) => {
     

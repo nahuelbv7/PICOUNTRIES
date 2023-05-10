@@ -37,7 +37,7 @@ const postActivity = async (req, res) => {
                 
                 // Busco el pais correspondiente en la base de datos
                 const country = await Country.findOne({
-                    where: { id: { [Op.iLike]: `%${countries}%` } }
+                    where: { id: { [Op.iLike]: `%${countries}%` } }   // ignoramos mayusculas y minusculas
                 });
                 // Agregamos la actividad recien creada al pais encontrado
                 await country?.addActivity(activity);

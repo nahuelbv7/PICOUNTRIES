@@ -8,11 +8,11 @@ const CardsContainer = ({countries}) => {
   const {numPage} = useSelector((state) => state) // Obtengo la pagina actual del estado de Redux
    
 
-  let init = (numPage-1) * 10 // Calcula el índice de inicio de la página actual
-  let end = numPage * 10 // Obtiene la página actual del estado de Redux
+  let init = (numPage-1) * 10 // Calculo el indice de inicio de la pagina actual
+  let end = numPage * 10 // Obtiene la pagina actual del estado de Redux
 
 
-  let cantPage = Math.floor(countries.length / 10)  // Calcula la cantidad total de páginas necesarias para mostrar todos los paises
+  let cantPage = Math.floor(countries.length / 10)  // Calcula la cantidad total de paginas necesarias para mostrar todos los paises
 
 
     return (

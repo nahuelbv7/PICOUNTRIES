@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     document.title = "PI-Countries";
-    dispatch(getCountries()); // Llama a la acción getCountries de Redux usando dispatch.
+    dispatch(getCountries()); // Llamo a getCountries de Redux usando dispatch.
   }, []);
 
   const countries = useSelector((state) => state.country); // Obtiene el estado de los países de Redux usando useSelector hook de Redux.
@@ -39,7 +39,7 @@ function App() {
     
        axios.get(`http://localhost:3001/countries?name=${searchCountry}`)
       .then((response) => {
-        if (response && response.data && response.data.name) {
+        if (response && response.data && response.data.name) {    // Verificamos si se obtuvo una respuesta valida y si el nombre del pais se encuentra en la respuesta
           dispatch(searchCountry(response.data.name));
         }
      })

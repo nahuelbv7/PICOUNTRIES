@@ -30,7 +30,6 @@
 
 }
 
-/* Estilo para las opciones dentro de los selectores */
 .selector1 option {
   background-color: #000000;
   color: #ffffff;
@@ -52,7 +51,7 @@
     margin-left: 10px;
   }
   
-  /* Estilo para las opciones dentro de los selectores */
+  
   .selector2 option {
     background-color: #000000;
     color: #ffffff;
