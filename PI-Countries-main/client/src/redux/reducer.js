@@ -9,7 +9,7 @@ const initialState = {
     detail: [],
     originalCountries: [],     
     activities: [],  
- 
+   
 };
 
 // Defino el reducer que se encarga de actualizar el estado de la aplicación
@@ -121,14 +121,15 @@ const reducer = (state = initialState, action) => {
         
         
             case FILTERACT:
-                // Filtramos los paises y actividades 
-                state.country.filter((c) => {
-               c.Activities.filter((a) => {if(a.name === action.payload) state.filteredCountry.push(c)}) // Agregamos el país al array filteredCountry
-                })
-                console.log(state.filteredCountry)
-                return {...state, 
-                   country: [...state.filteredCountry]  // Actualizamos el estado del pais con el array filteredCountry
-              }}
+                const filteredCountries = state.country.filter((c) => {
+                  return c.Activities.some((a) => a.name === action.payload);  // uso some para verificar si la act coincide con el country. con filter lo sobreescribia
+                 });
+                  
+                return {
+                    ...state,
+                    filteredCountry: filteredCountries,
+                    country: [...filteredCountries],
+                };}
         
     }
 
