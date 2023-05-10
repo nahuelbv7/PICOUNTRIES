@@ -52,8 +52,18 @@ const VerticalNav = () => {
   
 
   const handleSelect = (e) => {
-    dispatch(filterActCountry(e.target.value))
-  }
+   dispatch(filterActCountry(e.target.value))
+ }
+  // const handleSelect = (e) => {
+  //   const { value } = e.target;
+  //   console.log(value)
+  //   if (value === "ACTIVITIES") {
+  //     dispatch({ type: "RESTORE_ORIGINAL_COUNTRIES" });
+  //   } else {
+  //     dispatch(filterActCountry(value));
+  //   }
+  // };
+
 
   return (
     <nav className={style.verticalNav}>
@@ -103,7 +113,7 @@ const VerticalNav = () => {
       </select>
     
       <select className={style.selector2} onChange={handleSelect}>
-        <option value="">Activities</option>
+        <option>Activities</option>
         {activities.map((activity) => (
           <option key={activity.id} value={activity.name}>
             {activity.name}
