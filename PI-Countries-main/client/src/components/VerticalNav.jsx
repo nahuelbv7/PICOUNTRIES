@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const VerticalNav = () => {
   const dispatch = useDispatch();
 
-  // Obtenemos las actividades turisticas desde el estado global con el hook useSelector
+  // Obtenemos las actividades turisticas desde el estado global
   const activities = useSelector((state) => state.activities);
 
   // Utilizamos useEffect para hacer una llamada al backend y obtener las actividades turisticas
